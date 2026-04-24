@@ -804,3 +804,19 @@ nav {
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
   .reveal.visible { opacity: 1; transform: none; }
+.call-float {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background: #2e86c1;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.leistung-card:hover {
+  transform: translateY(-6px) scale(1.02);
+}
