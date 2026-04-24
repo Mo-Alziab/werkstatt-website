@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AZ Fahrzeugservice – Beim Gießhaus 2, Glückstadt</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue-dark: #0d2a3e;
+    --blue-mid: #1a5276;
+    --blue-accent: #2e86c1;
+    --blue-light: #5dade2;
+    --white: #ffffff;
+    --gray-light: #f4f6f8;
+    --gray-mid: #b0bec5;
+    --text-dark: #0d1b2a;
+    --text-muted: #607d8b;
+    --card-bg: #ffffff;
+    --section-alt: #f0f4f8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(13, 42, 62, 0.97);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 68px;
+    border-bottom: 1px solid rgba(46,134,193,0.3);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+  .nav-logo-img {
+  height: 40px;
+  width: auto;
+}
+
+  .nav-logo-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 1px;
+  }
+
+  .nav-logo-text span { color: var(--blue-light); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--gray-mid);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--blue-light); }
+
+  .nav-cta {
+    background: var(--blue-accent);
+    color: var(--white) !important;
+    padding: 9px 22px;
+    border-radius: 4px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--blue-light) !important; color: var(--white) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--blue-dark);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 5% 60px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(46,134,193,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: 'AZ';
+    position: absolute;
+    right: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(200px, 22vw, 340px);
+    font-weight: 800;
+    color: rgba(46,134,193,0.07);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 640px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(46,134,193,0.15);
+    border: 1px solid rgba(46,134,193,0.4);
+    color: var(--blue-light);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(52px, 7vw, 90px);
+    font-weight: 800;
+    line-height: 0.95;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 span { color: var(--blue-light); }
+
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--gray-mid);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 480px;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--blue-accent);
+    color: var(--white);
+    padding: 15px 36px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.2s, transform 0.15s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    padding: 15px 36px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: border-color 0.2s, transform 0.15s;
+    cursor: pointer;
+  }
+
+  .btn-outline:hover { border-color: var(--blue-light); color: var(--blue-light); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 64px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--blue-light);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--gray-mid);
+    margin-top: 4px;
+    font-weight: 400;
+  }
+
+  /* ── SECTION GENERAL ── */
+  section { padding: 96px 5%; }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blue-accent);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(36px, 4vw, 54px);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+  }
+
+  .section-title span { color: var(--blue-accent); }
+
+  .section-sub {
+    font-size: 16px;
+    color: var(--text-muted);
+    font-weight: 300;
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  /* ── LEISTUNGEN ── */
+  #leistungen { background: var(--section-alt); }
+
+  .leistungen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 56px;
+  }
+
+  .leistung-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 36px 32px;
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .leistung-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--blue-accent);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+
+  .leistung-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+  .leistung-card:hover::before { transform: scaleX(1); }
+
+  .leistung-icon {
+    width: 52px; height: 52px;
+    background: rgba(46,134,193,0.1);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 24px;
+    font-size: 24px;
+  }
+
+  .leistung-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+
+  .leistung-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── ÜBER UNS ── */
+  .ueber-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 56px;
+  }
+
+  .ueber-text p {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .team-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .team-card {
+    background: var(--blue-dark);
+    border-radius: 8px;
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    border: 1px solid rgba(46,134,193,0.2);
+  }
+
+  .team-avatar {
+    width: 56px; height: 56px;
+    background: var(--blue-accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+
+  .team-info h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+
+  .team-info .role {
+    font-size: 13px;
+    color: var(--blue-light);
+    font-weight: 400;
+    margin-top: 2px;
+  }
+
+  .team-info .contact-small {
+    font-size: 13px;
+    color: var(--gray-mid);
+    margin-top: 6px;
+  }
+
+  /* ── KONTAKT ── */
+  #kontakt { background: var(--blue-dark); }
+  #kontakt .section-title { color: var(--white); }
+  #kontakt .section-sub { color: var(--gray-mid); }
+  #kontakt .section-tag { color: var(--blue-light); }
+
+  .kontakt-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-top: 56px;
+    align-items: start;
+  }
+
+  .kontakt-info { display: flex; flex-direction: column; gap: 32px; }
+
+  .info-block {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .info-icon {
+    width: 44px; height: 44px;
+    background: rgba(46,134,193,0.15);
+    border: 1px solid rgba(46,134,193,0.3);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .info-block h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue-light);
+    margin-bottom: 6px;
+  }
+
+  .info-block p, .info-block a {
+    font-size: 16px;
+    color: var(--white);
+    font-weight: 300;
+    line-height: 1.6;
+    text-decoration: none;
+  }
+
+  .info-block a:hover { color: var(--blue-light); }
+
+  /* ── FORMULAR ── */
+  .form-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(46,134,193,0.2);
+    border-radius: 10px;
+    padding: 40px;
+  }
+
+  .form-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 28px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 5px;
+    padding: 13px 16px;
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    transition: border-color 0.2s;
+    outline: none;
+    width: 100%;
+  }
+
+  .form-group select option { background: var(--blue-dark); color: var(--white); }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--blue-accent);
+    background: rgba(46,134,193,0.08);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 110px; }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+
+  .form-submit {
+    width: 100%;
+    margin-top: 8px;
+    background: var(--blue-accent);
+    color: var(--white);
+    padding: 16px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .form-submit:hover { background: var(--blue-light); transform: translateY(-2px); }
+
+  .form-success {
+    display: none;
+    background: rgba(46,193,134,0.15);
+    border: 1px solid rgba(46,193,134,0.4);
+    border-radius: 6px;
+    padding: 16px 20px;
+    color: #5de2aa;
+    font-size: 15px;
+    margin-top: 16px;
+    text-align: center;
+  }
+
+  /* ── ÖFFNUNGSZEITEN ── */
+  .oeffnung-table { margin-top: 12px; }
+  .oeffnung-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 15px;
+  }
+  .oeffnung-row .day { color: var(--gray-mid); font-weight: 300; }
+  .oeffnung-row .time { color: var(--white); font-weight: 400; }
+  .oeffnung-row .closed { color: rgba(255,255,255,0.25); font-style: italic; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #07151f;
+    padding: 40px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-top: 1px solid rgba(46,134,193,0.15);
+  }
+
+  .footer-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--white);
+  }
+
+  .footer-brand span { color: var(--blue-light); }
+
+  footer p {
+    font-size: 13px;
+    color: var(--gray-mid);
+    font-weight: 300;
+  }
+
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-size: 13px;
+    color: var(--gray-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--blue-light); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .ueber-grid { grid-template-columns: 1fr; gap: 40px; }
+    .kontakt-grid { grid-template-columns: 1fr; gap: 48px; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-stats { gap: 28px; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+
+  /* ── SCROLL ANIMATION ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+ 
+    <img src="logo.png" alt="Logo" class="nav-logo-img">
+    <div class="nav-logo-text"><span>AZ</span> Fahrzeugservice</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#leistungen">Leistungen</a></li>
+    <li><a href="#ueber">Über uns</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+    <li><a href="#kontakt" class="nav-cta">Termin buchen</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Ihr Fahrzeugexperte in Glückstadt</div>
+    <h1>AZ<br><span>Fahrzeug</span><br>service</h1>
+    <p class="hero-sub">Reifenservice, Fahrzeughandel, Autoteile und Zulassungsservice — alles aus einer Hand. Professionell, zuverlässig, fair.</p>
+    <div class="hero-btns">
+      <a href="#kontakt" class="btn-primary">Termin anfragen</a>
+      <a href="#leistungen" class="btn-outline">Unsere Leistungen</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">4</div>
+        <div class="stat-label">Leistungsbereiche</div>
+      </div>
+      <div>
+        <div class="stat-num">6×</div>
+        <div class="stat-label">Woche geöffnet</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Kundenfokus</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEISTUNGEN -->
+<section id="leistungen">
+  <div class="reveal">
+    <div class="section-tag">Was wir bieten</div>
+    <div class="section-title">Unsere <span>Leistungen</span></div>
+    <p class="section-sub">Von der Reifenmontage bis zur Fahrzeuganmeldung — wir sind Ihr kompetenter Partner rund ums Fahrzeug.</p>
+  </div>
+  <div class="leistungen-grid">
+    <div class="leistung-card reveal">
+      <div class="leistung-icon">🔧</div>
+      <h3>Reifenservice & Ölwechsel</h3>
+      <p>Montage, Wuchten und Lagerung aller Reifentypen. Ölwechsel und Inspektion nach Herstellervorgaben.</p>
+    </div>
+    <div class="leistung-card reveal">
+      <div class="leistung-icon">🛒</div>
+      <h3>Autoteile & Zubehör</h3>
+      <p>Verkauf von Originalteilen und Zubehör für alle gängigen Fahrzeugmarken zu fairen Preisen.</p>
+    </div>
+    <div class="leistung-card reveal">
+      <div class="leistung-icon">🚗</div>
+      <h3>Fahrzeughandel</h3>
+      <p>An- und Verkauf von Gebrauchtfahrzeugen. Faire Bewertung, transparente Abwicklung.</p>
+    </div>
+    <div class="leistung-card reveal">
+      <div class="leistung-icon">📋</div>
+      <h3>Zulassungsservice</h3>
+      <p>An- und Abmeldung Ihres Fahrzeugs sowie Ausstellung von Kurzzeitkennzeichen – schnell und unkompliziert.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ÜBER UNS -->
+<section id="ueber">
+  <div class="reveal">
+    <div class="section-tag">Wer wir sind</div>
+    <div class="section-title">Ihr Team vor <span>Ort</span></div>
+  </div>
+  <div class="ueber-grid">
+    <div class="ueber-text reveal">
+      <p>AZ Fahrzeugservice steht für kompetente Beratung und zuverlässige Arbeit rund ums Fahrzeug. Wir sind ein familiäres Team mit Leidenschaft für Autos und dem Anspruch, unseren Kunden immer die beste Lösung zu bieten.</p>
+      <p>Unser Betrieb in Glückstadt ist Ihre erste Anlaufstelle für Reifenservice, Fahrzeughandel und alle Zulassungsfragen. Vereinbaren Sie einfach einen Termin – wir freuen uns auf Sie.</p>
+      <a href="#kontakt" class="btn-primary" style="display:inline-block; margin-top: 8px;">Jetzt Kontakt aufnehmen</a>
+    </div>
+    <div class="team-cards reveal">
+      <div class="team-card">
+        <div class="team-avatar">MA</div>
+        <div class="team-info">
+          <h4>Mohammad Alziab</h4>
+          <div class="role">Geschäftsführer</div>
+          <div class="contact-small">📞 015 771 033 109</div>
+          <div class="contact-small">✉ moalziab@azfahrzeugservice.com</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">MA</div>
+        <div class="team-info">
+          <h4>Mohib Alziab</h4>
+          <div class="role">Betriebsleiter</div>
+          <div class="contact-small">📞 015 226 990 373</div>
+          <div class="contact-small">✉ mohib@azfahrzeugservice.com</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="reveal">
+    <div class="section-tag">Kontakt & Termin</div>
+    <div class="section-title" style="color:white;">Termin <span style="color:var(--blue-light)">anfragen</span></div>
+    <p class="section-sub">Schreiben Sie uns — wir melden uns schnellstmöglich bei Ihnen.</p>
+  </div>
+  <div class="kontakt-grid">
+    <!-- Infos links -->
+    <div class="kontakt-info reveal">
+      <div class="info-block">
+        <div class="info-icon">📍</div>
+        <div>
+          <h4>Adresse</h4>
+          <p>Beim Gießhaus 2<br>25348 Glückstadt</p>
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-icon">📞</div>
+        <div>
+          <h4>Telefon</h4>
+          <a href="tel:+4915226990373">+49 1522 6990373</a>
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-icon">✉</div>
+        <div>
+          <h4>E-Mail</h4>
+          <a href="mailto:mohib@azfahrzeugservice.com">mohib@azfahrzeugservice.com</a>
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-icon">🕐</div>
+        <div>
+          <h4>Öffnungszeiten</h4>
+          <div class="oeffnung-table">
+            <div class="oeffnung-row"><span class="day">Mo – Fr</span><span class="time">09:00 – 17:00 Uhr</span></div>
+            <div class="oeffnung-row"><span class="day">Samstag</span><span class="time">09:00 – 13:00 Uhr</span></div>
+            <div class="oeffnung-row"><span class="day">Sonntag</span><span class="closed">Geschlossen</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formular rechts -->
+    <div class="form-card reveal">
+      <h3>Terminanfrage</h3>
+      <form id="contactForm" action="https://formspree.io/f/DEINE_ID" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Vorname</label>
+            <input type="text" name="vorname" placeholder="Max" required>
+          </div>
+          <div class="form-group">
+            <label>Nachname</label>
+            <input type="text" name="nachname" placeholder="Mustermann" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Telefon</label>
+          <input type="tel" name="telefon" placeholder="+49 ...">
+        </div>
+        <div class="form-group">
+          <label>E-Mail</label>
+          <input type="email" name="email" placeholder="ihre@email.de" required>
+        </div>
+        <div class="form-group">
+          <label>Gewünschte Leistung</label>
+          <select name="leistung">
+            <option value="">Bitte wählen…</option>
+            <option>Reifenservice / Ölwechsel</option>
+            <option>Autoteile / Zubehör</option>
+            <option>Fahrzeugankauf / -verkauf</option>
+            <option>Zulassungsservice</option>
+            <option>Sonstiges</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Nachricht</label>
+          <textarea name="nachricht" placeholder="Beschreiben Sie kurz Ihr Anliegen…"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Anfrage absenden →</button>
+        <div class="form-success" id="formSuccess">✓ Danke! Wir melden uns bald bei Ihnen.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand"><span>AZ</span> Fahrzeugservice</div>
+  <p>© 2025 AZ Fahrzeugservice · Beim Gießhaus 2, 25348 Glückstadt</p>
+  <div class="footer-links">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Form submit feedback
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('.form-submit');
+    btn.textContent = 'Wird gesendet…';
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        success.style.display = 'block';
+        form.reset();
+        btn.textContent = '✓ Gesendet!';
+      } else {
+        btn.textContent = 'Fehler – nochmal versuchen';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Fehler – nochmal versuchen';
+      btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
